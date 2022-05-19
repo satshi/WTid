@@ -8,35 +8,215 @@
 %\usepackage{physics}
 \usepackage{tgtermes,tgheros,tgcursor}
 \usepackage{type1cm}
-\newcommand{\pdv}[1]{\frac{\partial}{\partial #1}}
-\newcommand{\mint}[1]{\int_{#1}}
-\newcommand{\expval}[1]{\left\langle #1 \right\rangle}
-\newcommand{\expvala}[1]{\left\langle #1 \right\rangle_{A,\At}}
+\usepackage{physics}
 
 \newcommand{\del}{\partial}
 \newcommand{\Ncal}{\mathcal{N}}
 \newcommand{\Zb}{\mathbb{Z}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\phih}{\hat{\phi}}
 
 \newcommand{\strong}[1]{{\sffamily \bfseries #1}}
 
 \begin{document}
 \begin{center}
-{\bfseries \sffamily \LARGE Ward-Takahashi Identity in Euclidean Path-Integral Formalism}  \\
+{\bfseries \sffamily \LARGE Ward-Takahashi Identities in the Euclidean Path-Integral Formalism}  \\
 
 \vspace{0.5cm}
 \noindent {\bfseries \sffamily \Large Satoshi Yamaguchi}  
 \end{center}
 
 \section{Introduction}
-We would like to derive Ward-Takahashi(WT) identities within the Euclidean path-integral formalism. The purpose of this note is to fix the conventions including signs and $\pm i$.  This does not appear in the standard textbooks of quantum field theory.  There are nice explanation in \cite{Polchinski:1998rq}. However it focuses on two dimensions and the standard two dimensional CFT convention is different from one in higher dimensions.
+We would like to derive Ward-Takahashi(WT) identities within the Euclidean path-integral formalism. The purpose of this note is to fix the conventions including signs and $\pm i$.  This kind of derivation does not often appear in the standard textbooks of quantum field theory.  There are nice explanation in \cite{Polchinski:1998rq}. However, it focuses on two dimensions and the standard two-dimensional CFT convention is different from the standard convention in higher dimensions.
 
-This note also includes the WT identities for discrete symmetries that do not appear standard textbooks.  Such WT identities appears in \cite{Gaiotto:2014kfa}.  However it is treated as a kind of axioms.  In this note, we would like to ``derive'' the identities from the Euclidean path-integral formalism.
+This note also includes the WT identities for discrete symmetries that do not appear standard textbooks.  Such WT identities appears in \cite{Gaiotto:2014kfa}.  However, it is treated as a kind of axioms.  In this note, we would like to ``derive'' the identities from the Euclidean path-integral formalism.
+
+Let us prepare the notations used in this note.  We consider $d$-dimensional quantum field theories in the Euclidean path-integral formalism.
+Let $\phi(x)$ the dynamical fields of the theory and $S[\phi]$ the Euclidean action. $\phi(x)$ may have multiple components.  The partition is expressed as
+\begin{align}
+    Z=\int D\phi \exp(-S[\phi]).
+\end{align}
+The expectation value of an operator $X$ is given by
+\begin{align}
+    \expval{X}:=\frac{1}{Z}\int D\phi X \exp(-S[\phi]).
+\end{align}
+The symmetry is the transformation $\phi(x)\to \phi'(x)$ which leaves action invariant:
+\begin{align}
+    S[\phi']=S[\phi].
+\end{align}
+In this note, we assume the integral measure $\int D\phi $ is always invariant, for simplicity.
 
 \section{Continuous symmetry}
+For a continuous symmetry, it is convenient to consider infinitesimal transformation:
+\begin{align}
+    \phi(x)\to \phi'(x)=\phi(x)+\epsilon \Delta \phi(x).
+\end{align}
+Here $\epsilon$ is the infinitesimal parameter of the transformation, and $\Delta \phi(x)$ is a finite local operator.
+The invariance of the action implies
+\begin{align}
+    \int d^dx\Delta \phi(x)\fdv{S}{\phi(x)}=0.
+\end{align}
+
+The strategy to obtain the WT identity is to promote the infinitesimal constant parameter $\epsilon$ to an arbitrary infinitesimal function $\epsilon(x)$.  Then the following identity holds:
+\begin{align}
+    &\int D\phi \exp(-S[\phi])=
+    \int D\phi' \exp(-S[\phi'])=
+    \int D\phi \exp(-S[\phi]) (1-\delta S[\phi]),\\
+    &\delta S[\phi]:=S[\phi']-S[\phi].
+\end{align}
+In the first step, we just change the letter.  In the second step, we use the invariance of the measure.
+This identity is rewritten as
+\begin{align}
+    \expval{\delta S[\phi]}=0.
+    \label{contWTid0}
+\end{align}
+
+Let us look closely at $\delta S$.  Since $\delta S=0$ when $\del_{\mu}\epsilon=0$,  $\delta S$ can be written as a linear functional of $\del_{\mu}\epsilon$:
+\begin{align}
+    \delta S=\int d^dx \fdv{S}{\phi(x)}\epsilon(x)\Delta\phi(x)
+    =:-\int d^d x\del_{\mu}\epsilon(x) J^{\mu}(x)=
+    \int d^dx \epsilon(x)\del_{\mu}J^{\mu}(x).\label{defcurrent}
+\end{align}
+Here we introduce the current $J^{\mu}(x)$.  We define this current such that the spacial components of $J^{\mu}$ are identical to the ones in the standard Lorentzian formalism.
+
+The identity \eqref{contWTid0} implies
+\begin{align}
+    \expval{\del_{\mu}J^{\mu}}=0.
+\end{align}
+This is the quantum version of the conservation of the current and called Ward-Takahashi (WT) identity.
+
+We can perform the same trick when other operator $X$ is inserted.  $X$ includes some local operators and (or) defects.  In this case, the story is the same if we consider $\epsilon(x)$ that vanishes at the place where $X$ is inserted, since $X'=X$ in this case.  We obtain a bit more general WT identity:
+\begin{align}
+    \expval{\del_{\mu}J^{\mu}(x) X}=0,\ (x \text{ does not coincide with the points where $X$ is inserted.})
+\end{align}
+In the following discussion, we always assume that $x$ does not coincide with the points where $X$ is inserted, without indication.
+
+Next, let us consider a local operator $\Ocal(x)$.  Suppose $\Ocal$ transformed as
+\begin{align}
+    \Ocal(x)\to \Ocal'(x)=\Ocal(x)+\epsilon \Delta \Ocal(x),
+\end{align}
+by the symmetry transformation that we are considering.  When promoting $\epsilon$ to a function, you may worry that the transformation of $\Ocal$ may depends not only on $\epsilon(x)$ but also on the derivatives of $\epsilon(x)$.  To avoid this, we consider $\epsilon(x)$ that is a constant in a small open set including $x_1$.  Such $\epsilon(x)$ is arbitrary enough.  Then, the transformation of $\Ocal(x_1)$ is written as
+\begin{align}
+    \Ocal(x_1)\to \Ocal'(x_1)=\Ocal(x_1)+\epsilon(x_1) \Delta \Ocal(x_1).
+\end{align}
+By the same strategy as previous ones, we obtain the identity:
+\begin{align}
+    \int D\phi \Ocal(x_1)\exp(-S[\phi])X
+    =\int D\phi' \Ocal'(x_1)\exp(-S[\phi'])X\nonumber\\
+    =\int D\phi (\Ocal(x_1)+\epsilon(x_1)\Delta \Ocal(x_1))(1-\delta S)\exp(-S[\phi]).\nonumber\\
+    \expval{\Ocal(x_1)\delta S X}
+    =\expval{\epsilon(x_1)\Delta \Ocal(x_1)X} \label{tempWT0}
+\end{align}
+
+
+The left-hand side of this identity can be rewritten by using the definition of the current \eqref{defcurrent} as
+\begin{align}
+    \mathrm{l.h.s.}=\int d^dx \epsilon(x)\expval{\del_{\mu}J^{\mu}(x)\Ocal(x_1)X}.
+\end{align}
+On the other hand, the right-hand side is rewritten as
+\begin{align}
+    \mathrm{r.h.s.}=\int d^dx \epsilon(x)\delta^d(x-x_1)\expval{\Delta \Ocal(x_1)X}.
+\end{align}
+Thus, we obtain the WT identity:
+\begin{align}
+    \expval{\del_{\mu}J^{\mu}(x) \Ocal(x_1)X}=\delta^d(x-x_1)\expval{\Delta \Ocal(x_1)X}.
+    \label{contWTid2}
+\end{align}
+
+Next, let us consider the charge.  Lets take a region $D$ which includes $x_1$ but does not include the points where $X$ is inserted. We integrate both sides of \eqref{contWTid2} and use Gauss's theorem:
+\begin{align}
+    \int_{\Sigma}dS_{\mu}\expval{J^{\mu}(x)\Ocal(x_1)X}=\expval{\Delta \Ocal(x_1)X},\label{tempWT1}
+\end{align}
+where $\Sigma$ is the boundary of $D$.  We introduce the charge on $\Sigma$:
+\begin{align}
+    Q(\Sigma):=-i\int_{\Sigma}dS_{\mu} J^{\mu}(x).
+\end{align}
+Then \eqref{tempWT1} is rewritten as
+\begin{align}
+    \expval{iQ(\Sigma)\Ocal(x_1)X}=
+    \expval{\Delta \Ocal(x_1)X}.
+    \label{tempWT2}
+\end{align}
+
+Finally, we introduce the symmetry defect.  The identity \eqref{tempWT2} reads
+\begin{align}
+    \expval{(1+i\epsilon Q(\Sigma))\Ocal(x_1)X}=\expval{\Ocal(x_1)X}.
+\end{align}
+So, it is convenient to define symmetry defect
+\begin{align}
+    U_{\epsilon}(\Sigma):=
+    1+i\epsilon Q(\Sigma).
+\end{align}
+Then, the WT identity can be written as
+\begin{align}
+    \expval{U_{\epsilon}(\Sigma)\Ocal(x_1) X}=\expval{\Ocal'(x_1)X}.
+\end{align}
+This final form will be extended to the finite transformation, as well as the discrete symmetry.
+
+\subsection{Relation to the gauge field}
+
+The current is also expressed by the functional derivative of the action by the gauge field.  Here, we want to fix the convention.
+
+Let us consider $U(1)$ global symmetry.   We introduce the background gauge field $A_{\mu}(x)$.  The action is denoted by $S[\phi,A]$.
+The gauge transformation is given by
+\begin{align}
+    \phi'(x)=\phi(x)+\epsilon(x)\Delta \phi(x),\quad
+    A'_{\mu}(x)=A_{\mu}(x)+\del_{\mu}\epsilon(x).
+\end{align}
+The action is invariant under this gauge transformation:
+\begin{align}
+    S[\phi',A']=S[\phi,A].
+\end{align}
+This relation reads
+\begin{align}
+    \int d^dx\left[
+        \fdv{S}{\phi}\epsilon(x)\Delta \phi(x)
+        +\fdv{S}{A_{\mu}(x)}\del_{\mu}\epsilon(x)
+    \right]=0.
+\end{align}
+By comparing this equation with \eqref{defcurrent}, we obtain
+\begin{align}
+    J^{\mu}(x)=\fdv{S}{A_{\mu}(x)}.
+\end{align}
 
 \section{Discrete symmetry}
+Let us pick up a group element $g$. Its action on the local operator $\Ocal(x)$ is denoted by
+\begin{align}
+    \Ocal(x)\to \Ocal^g(x).
+\end{align}
+Again, let us pick up a point $x_1$ that does not coincide with the points where $X$ is inserted.  We also choose a region $D$ including $x_1$.  The boundary of $D$ is denoted by $\Sigma$.  Let us consider the following change of variables in the path-integral:
+\begin{align}
+    \phih(x)=
+    \begin{cases}
+        \phi^{g^{-1}}(x),& (x\in D)\\
+        \phi(x),& (x\notin D)
+    \end{cases}.
+\end{align}
+We can derive the following identity:
+\begin{align}
+    &\expval{\Ocal^{g}(x_1) X}
+    =\frac{1}{Z}\int D\phi \Ocal^{g}(x_1) X \exp(-S[\phi])
+    =\frac{1}{Z}\int D\phih \widehat{\Ocal^{g}}(x_1) X \exp(-S[\phih])\nonumber\\    
+    &\qquad =\frac{1}{Z}\int D\phi \Ocal(x_1) X \exp(-S[\phih]).
+    \label{tempWT3}
+    =\expval{U_{g}(\Sigma)\Ocal(x_1)X}
+\end{align}
+We define the symmetry defect $U_{g}(\Sigma)$ by
+\begin{align}
+    U_{g}(\Sigma):=\exp(-S[\phih]+S[\phi]).
+\end{align}
+Then we can express the WT identity \eqref{tempWT3} as
+\begin{align}
+    \expval{\Ocal^{g}(x_1)X}
+    =\expval{U_{g}(\Sigma)\Ocal(x_1)X}.
+\end{align}
+
+\section{Examples}
+\subsection{$d$-dimensional complex scalar field}
+
 
 \section{2D CFT convention}
+
 
 
 \begin{thebibliography}{9}
