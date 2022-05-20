@@ -15,6 +15,7 @@
 \newcommand{\Zb}{\mathbb{Z}}
 \newcommand{\Ocal}{\mathcal{O}}
 \newcommand{\phih}{\hat{\phi}}
+\newcommand{\Lcal}{\mathcal{L}}
 
 \newcommand{\strong}[1]{{\sffamily \bfseries #1}}
 
@@ -95,7 +96,7 @@ Next, let us consider a local operator $\Ocal(x)$.  Suppose $\Ocal$ transformed 
 \begin{align}
     \Ocal(x)\to \Ocal'(x)=\Ocal(x)+\epsilon \Delta \Ocal(x),
 \end{align}
-by the symmetry transformation that we are considering.  When promoting $\epsilon$ to a function, you may worry that the transformation of $\Ocal$ may depends not only on $\epsilon(x)$ but also on the derivatives of $\epsilon(x)$.  To avoid this, we consider $\epsilon(x)$ that is a constant in a small open set including $x_1$.  Such $\epsilon(x)$ is arbitrary enough.  Then, the transformation of $\Ocal(x_1)$ is written as
+by the symmetry transformation that we are considering.  When promoting $\epsilon$ to a function, you may worry that the transformation of $\Ocal$ may depend not only on $\epsilon(x)$ but also on the derivatives of $\epsilon(x)$.  To avoid this, we consider $\epsilon(x)$ that is a constant in a small open set including $x_1$.  Such $\epsilon(x)$ is arbitrary enough.  Then, the transformation of $\Ocal(x_1)$ is written as
 \begin{align}
     \Ocal(x_1)\to \Ocal'(x_1)=\Ocal(x_1)+\epsilon(x_1) \Delta \Ocal(x_1).
 \end{align}
@@ -104,7 +105,7 @@ By the same strategy as previous ones, we obtain the identity:
     \int D\phi \Ocal(x_1)\exp(-S[\phi])X
     =\int D\phi' \Ocal'(x_1)\exp(-S[\phi'])X\nonumber\\
     =\int D\phi (\Ocal(x_1)+\epsilon(x_1)\Delta \Ocal(x_1))(1-\delta S)\exp(-S[\phi]).\nonumber\\
-    \expval{\Ocal(x_1)\delta S X}
+    \expval{\Ocal(x_1)\delta S\, X}
     =\expval{\epsilon(x_1)\Delta \Ocal(x_1)X} \label{tempWT0}
 \end{align}
 
@@ -123,13 +124,13 @@ Thus, we obtain the WT identity:
     \label{contWTid2}
 \end{align}
 
-Next, let us consider the charge.  Lets take a region $D$ which includes $x_1$ but does not include the points where $X$ is inserted. We integrate both sides of \eqref{contWTid2} and use Gauss's theorem:
+Next, let us consider the charge.  Let us take a region $D$ which includes $x_1$ but does not include the points where $X$ is inserted. We integrate both sides of \eqref{contWTid2} and use Gauss's theorem:
 \begin{align}
     \int_{\Sigma}dS_{\mu}\expval{J^{\mu}(x)\Ocal(x_1)X}=\expval{\Delta \Ocal(x_1)X},\label{tempWT1}
 \end{align}
 where $\Sigma$ is the boundary of $D$.  We introduce the charge on $\Sigma$:
 \begin{align}
-    Q(\Sigma):=-i\int_{\Sigma}dS_{\mu} J^{\mu}(x).
+    Q(\Sigma):=-i\int_{\Sigma}dS_{\mu} J^{\mu}(x).\label{charge}
 \end{align}
 Then \eqref{tempWT1} is rewritten as
 \begin{align}
@@ -212,12 +213,73 @@ Then we can express the WT identity \eqref{tempWT3} as
 \end{align}
 
 \section{Examples}
+\subsection{$d$-dimensional Dirac fermion}
 \subsection{$d$-dimensional complex scalar field}
 
 
 \section{2D CFT convention}
 
 
+\appendix
+\subsection{Currents in the Lorentzian signature}
+Let us consider $d$-dimensional QFT with the fundamental field $\phi(x)$ and the Lorentzian action:
+\begin{align}
+    S_{L}=\int d^d x \Lcal(\phi,\del \phi).
+\end{align}
+Suppose this theory is invariant under the transformation:
+\begin{align}
+    \phi(x)\to \phi'(x)=\phi(x)+\epsilon \Delta \phi(x).
+\end{align}
+The action is invariant under this transformation.  Or equivalently, the variation of $\Lcal$ can be written with a vector field $K^{\mu}$ as
+\begin{align}
+    \delta \Lcal = \epsilon \del_{\mu}K^{\mu}(x).
+\end{align}
+Then, the Noether current is given by
+\begin{align}
+    J^{\mu}(x)=\pdv{\Lcal}{(\del_{\mu}\phi(x))} \Delta \phi(x)-K^{\mu}(x).
+\end{align}
+When promoting the $\epsilon$ to a function $\epsilon(x)$, the variation of the action can be written as
+\begin{align}
+    \delta S_{L}=\int d^d x \del_{\mu}\epsilon(x) J^{\mu}(x)=-\int d^d x \epsilon(x) \del_{\mu}J^{\mu}(x).
+\end{align}
+Actually
+\begin{align}
+    \delta S_{L}
+    =&\int d^d x \left[
+        \pdv{\Lcal}{\phi(x)}\epsilon(x)\Delta \phi(x)
+        +\pdv{\Lcal}{(\del_{\mu}\phi(x))}\del_{\mu}(\epsilon(x)\Delta \phi(x))
+    \right]\nonumber\\
+    =&\int d^d x \left[\epsilon(x)\left(
+        \pdv{\Lcal}{\phi(x)}\Delta \phi(x)
+        +\pdv{\Lcal}{(\del_{\mu}\phi(x))}\epsilon(x)\del_{\mu}\Delta \phi(x)
+        \right)
+        +\del_{\mu}\epsilon(x)\pdv{\Lcal}{(\del_{\mu}\phi(x))}\Delta \phi(x)
+    \right]\nonumber\\
+    =&\int d^d x \left[\epsilon(x)\del_{\mu}K^{\mu}(x)
+        +\del_{\mu}\epsilon(x)\pdv{\Lcal}{(\del_{\mu}\phi(x))}\Delta \phi(x)
+    \right]\nonumber\\
+    =&\int d^d x \del_{\mu}\epsilon(x) J^{\mu}(x).\nonumber\\
+\end{align}
+
+For a field configuration satisfying the equation of motion, $\delta S_{L}=0$ for an arbitrary variation $\delta \phi$.  Therefore, $\del_{\mu}J^{\mu}=0$ for such a configuration.
+
+By a naive Wick rotation, $S_{L}$ is related to the Euclidean action $S_{E}$ by
+\begin{align}
+    iS_{L}=-S_{E}.
+\end{align}
+Taking the Euclidean time $x^d=ix^0$ into account, we get the relation
+\begin{align}
+    \delta S_{E}=-\int d^d x \del_{\mu}\epsilon(x) J^{\mu}(x)=\int d^d x \epsilon(x) \del_{\mu}J^{\mu}(x),
+\end{align}
+which coincide with \eqref{defcurrent}.  The ``time'' component of the current is related as
+\begin{align}
+    J^{d}=iJ^{0}.\label{timecomponent}
+\end{align}
+The charge $Q$ on a time slice is defined as
+\begin{align}
+    Q=\int_{\text{space}} d^{d-1}x J^{0}.
+\end{align}
+Taking \eqref{timecomponent} into account, one finds that the expression of charge \eqref{charge} is appropriate.
 
 \begin{thebibliography}{9}
 %\cite{Polchinski:1998rq}
