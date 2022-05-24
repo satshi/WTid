@@ -90,6 +90,7 @@ This is the quantum version of the conservation of the current and called Ward-T
 We can perform the same trick when other operator $X$ is inserted.  $X$ includes some local operators and (or) defects.  In this case, the story is the same if we consider $\epsilon(x)$ that vanishes at the place where $X$ is inserted, since $X'=X$ in this case.  We obtain a bit more general WT identity:
 \begin{align}
     \expval{\del_{\mu}J^{\mu}(x) X}=0,\ (x \text{ does not coincide with the points where $X$ is inserted.})
+    \label{WTid0.5}
 \end{align}
 In the following discussion, we always assume that $x$ does not coincide with the points where $X$ is inserted, without indication.
 
@@ -154,6 +155,26 @@ Then, the WT identity can be written as
     \expval{U_{\epsilon}(\Sigma)\Ocal(x_1) X}=\expval{\Ocal'(x_1)X}.
 \end{align}
 This final form will be extended to the finite transformation, as well as the discrete symmetry.
+\subsection{Expression by differential forms}
+
+It is often convenient to introduce the differential form.  For a vector field $J^{\mu}$, we consider $(d-1)$-form $*J$:
+\begin{align}
+    *J=\epsilon_{\mu\nu_2\nu_3\dots \nu_d}J^{\mu}dx^{\nu_2}\wedge \dots \wedge dx^{\nu_d}.
+\end{align}
+Then, the WT identity \eqref{WTid0.5} can be written as
+\begin{align}
+    \expval{d*J(x) X}=0.
+\end{align}
+The charge \eqref{charge} can be written as
+\begin{align}
+    Q(\Sigma)=-i\int_{\Sigma}*J.
+\end{align}
+The orientation of $\Sigma$ is chosen by choosing the volume form $\mathrm{vol}(\Sigma)$ as
+\begin{align}
+    &n_{\mu}dx^{\mu}\wedge \mathrm{vol}(\Sigma)=dx^{1}\wedge \dots \wedge dx^{d},\\
+    &n_{\mu}:\text{ the outward-pointing unit normal vecotr of } \Sigma.\nonumber
+\end{align}
+
 
 \subsection{Relation to the gauge field}
 
