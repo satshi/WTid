@@ -16,6 +16,7 @@
 \newcommand{\Ocal}{\mathcal{O}}
 \newcommand{\phih}{\hat{\phi}}
 \newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\psib}{\bar{\psi}}
 
 \newcommand{\strong}[1]{{\sffamily \bfseries #1}}
 
@@ -204,7 +205,7 @@ We can derive the following identity:
 \end{align}
 We define the symmetry defect $U_{g}(\Sigma)$ by
 \begin{align}
-    U_{g}(\Sigma):=\exp(-S[\phih]+S[\phi]).
+    U_{g}(\Sigma):=\exp(-S[\phih]+S[\phi]).\label{symmetryoperator}
 \end{align}
 Then we can express the WT identity \eqref{tempWT3} as
 \begin{align}
@@ -214,6 +215,44 @@ Then we can express the WT identity \eqref{tempWT3} as
 
 \section{Examples}
 \subsection{$d$-dimensional Dirac fermion}
+The action for the Dirac fermion is
+\begin{align}
+    S=\int d^d x \left(i \psib \gamma^{\mu}\del_{\mu}\psi+im \psib\psi\right).
+\end{align}
+This action has the vector $U(1)$ symmetry:
+\begin{align}
+    \delta \psi=i\epsilon \psi
+    \delta \psib=-i\epsilon \psib
+\end{align}
+The infinitesimal transformation is
+\begin{align}
+    \delta\psi=i\epsilon\psi,\quad 
+    \delta\psib=-i\epsilon\psib.
+\end{align}
+
+The current for this symmetry is obtained as
+\begin{align}
+    J^{\mu}=\psib \gamma^{\mu} \psi.
+\end{align}
+Therefore, the symmetry operator for an infinitesimal transformation is given by
+\begin{align}
+    U_{\epsilon}(\Sigma)=\exp\left(
+        i\epsilon Q(\Sigma)
+    \right)=\exp\left(
+        \epsilon\int_{\Sigma}dS_{\mu}J^{\mu}
+    \right),\quad
+    Q(\Sigma)=-i\int_{\Sigma}dS_{\mu}J^{\mu}.
+\end{align}
+This expression is valid even when $\epsilon$ is replaced by a finite parameter $\alpha$:
+\begin{align}
+    U_{\alpha}(\Sigma)=\exp\left(
+        \alpha\int_{\Sigma}dS_{\mu}J^{\mu}
+    \right),
+\end{align}
+as one can check from the expression 
+\eqref{symmetryoperator}.
+
+
 \subsection{$d$-dimensional complex scalar field}
 
 
@@ -221,7 +260,7 @@ Then we can express the WT identity \eqref{tempWT3} as
 
 
 \appendix
-\subsection{Currents in the Lorentzian signature}
+\section{Currents in the Lorentzian signature}
 Let us consider $d$-dimensional QFT with the fundamental field $\phi(x)$ and the Lorentzian action:
 \begin{align}
     S_{L}=\int d^d x \Lcal(\phi,\del \phi).
