@@ -29,24 +29,30 @@
 \end{center}
 
 \section{Introduction}
-We would like to derive Ward-Takahashi(WT) identities within the Euclidean path-integral formalism. The purpose of this note is to fix the conventions including signs and $\pm i$.  This kind of derivation does not often appear in the standard textbooks of quantum field theory.  There are nice explanation in \cite{Polchinski:1998rq}. However, it focuses on two dimensions and the standard two-dimensional CFT convention is different from the standard convention in higher dimensions.
+We aim to derive the Ward-Takahashi (WT) identities using the Euclidean path-integral formalism. The primary purpose of this note is to establish conventions, specifically those involving signs and the factors of $\pm i$. Such derivations are infrequently encountered in standard quantum field theory textbooks. A commendable explanation can be found in \cite{Polchinski:1998rq}. However, this source focuses on two dimensions, and its conventions for two-dimensional CFT differ from those typically used in higher dimensions.
 
-This note also includes the WT identities for discrete symmetries that do not appear standard textbooks.  Such WT identities appears in \cite{Gaiotto:2014kfa}.  However, it is treated as a kind of axioms.  In this note, we would like to ``derive'' the identities from the Euclidean path-integral formalism.
+Additionally, this note encompasses the WT identities for discrete symmetries, which are not covered in standard textbooks. These identities are mentioned in \cite{Gaiotto:2014kfa}. Yet, there, they are presented more as axioms. In this note, we seek to ``derive'' these identities from the Euclidean path-integral formalism.
 
 Let us prepare the notations used in this note.  We consider $d$-dimensional quantum field theories in the Euclidean path-integral formalism.
-Let $\phi(x)$ the dynamical fields of the theory and $S[\phi]$ the Euclidean action. $\phi(x)$ may have multiple components.  The partition is expressed as
+
+Let us establish the notation to be employed throughout this note. We will consider $d$-dimensional quantum field theories within the framework of the Euclidean path-integral formalism.
+
+Denoted by $\phi(x)$ the dynamical fields of the theory and $S[\phi]$ the Euclidean action. Note that $\phi(x)$ can possess multiple components.  The partition is expressed as
 \begin{align}
     Z=\int D\phi \exp(-S[\phi]).
 \end{align}
-The expectation value of an operator $X$ is given by
+
+The expectation value of an operator $X$ is defined by
 \begin{align}
     \expval{X}:=\frac{1}{Z}\int D\phi X \exp(-S[\phi]).
 \end{align}
-The symmetry is the transformation $\phi(x)\to \phi'(x)$ which leaves action invariant:
+
+A transformation $\phi(x)\to \phi'(x)$ is considered a symmetry if it leaves action invariant, i.e.
 \begin{align}
     S[\phi']=S[\phi].
 \end{align}
-In this note, we assume the integral measure $\int D\phi $ is always invariant, for simplicity.
+
+Throughout this note, for the sake of simplicity, we will make the assumption that the integration measure $\int D\phi $ is invariant.
 
 \section{Continuous symmetry}
 For a continuous symmetry, it is convenient to consider infinitesimal transformation:
