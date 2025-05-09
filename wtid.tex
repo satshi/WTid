@@ -29,43 +29,35 @@
 \end{center}
 
 \section{Introduction}
-We aim to derive the Ward-Takahashi (WT) identities using the Euclidean path-integral formalism. The primary purpose of this note is to establish conventions, specifically those involving signs and the factors of $\pm i$. Such derivations are infrequently encountered in standard quantum field theory textbooks. A commendable explanation can be found in \cite{Polchinski:1998rq}. However, this source focuses on two dimensions, and its conventions for two-dimensional CFT differ from those typically used in higher dimensions.
+In this note we derive the Ward-Takahashi (WT) identities using the Euclidean path-integral formalism.  Our main goal is to fix all conventions—especially signs and factors of $\pm i$—which are rarely made explicit in standard quantum field theory textbooks.  A clear discussion in two dimensions appears in \cite{Polchinski:1998rq}, but its conventions for 2D CFT differ from those commonly adopted in higher dimensions.
 
-Additionally, this note encompasses the WT identities for discrete symmetries, which are not covered in standard textbooks. These identities are mentioned in \cite{Gaiotto:2014kfa}. Yet, there, they are presented more as axioms. In this note, we seek to ``derive'' these identities from the Euclidean path-integral formalism.
+This note also covers WT identities for discrete symmetries, which are typically omitted in standard texts. These identities are mentioned in \cite{Gaiotto:2014kfa}. Yet, there, they are presented more as axioms. In this note, we seek to ``derive'' these identities from the Euclidean path-integral formalism.
 
-Let us prepare the notations used in this note.  We consider $d$-dimensional quantum field theories in the Euclidean path-integral formalism.
-
-Let us establish the notation to be employed throughout this note. We will consider $d$-dimensional quantum field theories within the framework of the Euclidean path-integral formalism.
-
-Denoted by $\phi(x)$ the dynamical fields of the theory and $S[\phi]$ the Euclidean action. Note that $\phi(x)$ can possess multiple components.  The partition is expressed as
+We work with $d$-dimensional quantum field theories in the Euclidean path integral formalism. The dynamical fields are denoted by $\phi(x)$, and the Euclidean action by $S[\phi]$, where $\phi(x)$ may have multiple components. The partition function is given by
 \begin{align}
     Z=\int D\phi \exp(-S[\phi]).
 \end{align}
-
-The expectation value of an operator $X$ is defined by
+The expectation value of an operator $X$ is defined as
 \begin{align}
     \expval{X}:=\frac{1}{Z}\int D\phi X \exp(-S[\phi]).
 \end{align}
-
-A transformation $\phi(x)\to \phi'(x)$ is considered a symmetry if it leaves action invariant, i.e.
+A transformation $\phi(x)\to \phi'(x)$ is a symmetry if it leaves the action invariant:
 \begin{align}
     S[\phi']=S[\phi].
 \end{align}
-
 Throughout this note, for the sake of simplicity, we will make the assumption that the integration measure $\int D\phi $ is invariant.
 
 \section{Continuous symmetry}
-For a continuous symmetry, it is convenient to consider infinitesimal transformation:
+For a continuous symmetry, it is convenient to consider an infinitesimal transformation of the form:
 \begin{align}
-    \phi(x)\to \phi'(x)=\phi(x)+\epsilon \Delta \phi(x).
+    \phi(x)\to \phi'(x)=\phi(x)+\epsilon \Delta \phi(x),
 \end{align}
-Here $\epsilon$ is the infinitesimal parameter of the transformation, and $\Delta \phi(x)$ is a finite local operator.
-The invariance of the action implies
+where $\epsilon$ is the infinitesimal constant parameter, and $\Delta\phi(x)$ is a local operator.  The invariance of the action then implies
 \begin{align}
     \int d^dx\Delta \phi(x)\fdv{S}{\phi(x)}=0.
 \end{align}
 
-The strategy to obtain the WT identity is to promote the infinitesimal constant parameter $\epsilon$ to an arbitrary infinitesimal function $\epsilon(x)$.  Then the following identity holds:
+To derive the WT identity, we promote the constant $\epsilon$ to a position-dependent infinitesimal function  $\epsilon(x)$.  Then the following identity holds:
 \begin{align}
     &\int D\phi \exp(-S[\phi])=
     \int D\phi' \exp(-S[\phi'])=
@@ -79,7 +71,7 @@ This identity is rewritten as
     \label{contWTid0}
 \end{align}
 
-Let us look closely at $\delta S$.  Since $\delta S=0$ when $\del_{\mu}\epsilon=0$,  $\delta S$ can be written as a linear functional of $\del_{\mu}\epsilon$:
+Let us examine the variation $\delta S$ more closely.  Since $\delta S=0$ when $\del_{\mu}\epsilon=0$,  we can express $\delta S$ as a linear functional of $\del_{\mu}\epsilon$:
 \begin{align}
     \delta S=\int d^dx \fdv{S}{\phi(x)}\epsilon(x)\Delta\phi(x)
     =:-\int d^d x\del_{\mu}\epsilon(x) J^{\mu}(x)=
@@ -93,22 +85,23 @@ The identity \eqref{contWTid0} implies
 \end{align}
 This is the quantum version of the conservation of the current and called Ward-Takahashi (WT) identity.
 
-We can perform the same trick when other operator $X$ is inserted.  $X$ includes some local operators and (or) defects.  In this case, the story is the same if we consider $\epsilon(x)$ that vanishes at the place where $X$ is inserted, since $X'=X$ in this case.  We obtain a bit more general WT identity:
+We can similarly insert some other operator $X$ is inserted.  $X$ includes some local operators and (or) defects.  As long as $\epsilon(x)$ vanishes at the insertion points of $X$, the same logic applies since $X'=X$.  This yields a bit more general WT identity:
 \begin{align}
     \expval{\del_{\mu}J^{\mu}(x) X}=0,\ (x \text{ does not coincide with the points where $X$ is inserted.})
     \label{WTid0.5}
 \end{align}
 In the following discussion, we always assume that $x$ does not coincide with the points where $X$ is inserted, without indication.
 
-Next, let us consider a local operator $\Ocal(x)$.  Suppose $\Ocal$ transformed as
+Next, let us consider a local operator $\Ocal(x)$ that transforms under the symmetry transformation as
 \begin{align}
-    \Ocal(x)\to \Ocal'(x)=\Ocal(x)+\epsilon \Delta \Ocal(x),
+    \Ocal(x)\to \Ocal'(x)=\Ocal(x)+\epsilon \Delta \Ocal(x).
 \end{align}
-by the symmetry transformation that we are considering.  When promoting $\epsilon$ to a function, you may worry that the transformation of $\Ocal$ may depend not only on $\epsilon(x)$ but also on the derivatives of $\epsilon(x)$.  To avoid this, we consider $\epsilon(x)$ that is a constant in a small open set including $x_1$.  Such $\epsilon(x)$ is arbitrary enough.  Then, the transformation of $\Ocal(x_1)$ is written as
+When promoting $\epsilon$ to a function, one might worry that the transformation law of $\Ocal$ could involve the derivatives of $\epsilon(x)$.
+To avoid this complication, we consider $\epsilon(x)$ that is a constant within a small open neighborhood around $x_1$.  Such $\epsilon(x)$ is arbitrary enough.  Then, the transformation of $\Ocal(x_1)$ is written as
 \begin{align}
     \Ocal(x_1)\to \Ocal'(x_1)=\Ocal(x_1)+\epsilon(x_1) \Delta \Ocal(x_1).
 \end{align}
-By the same strategy as previous ones, we obtain the identity:
+Applying the same trick as before, we obtain:
 \begin{align}
     \int D\phi \Ocal(x_1)\exp(-S[\phi])X
     =\int D\phi' \Ocal'(x_1)\exp(-S[\phi'])X\nonumber\\
@@ -116,8 +109,6 @@ By the same strategy as previous ones, we obtain the identity:
     \expval{\Ocal(x_1)\delta S\, X}
     =\expval{\epsilon(x_1)\Delta \Ocal(x_1)X} \label{tempWT0}
 \end{align}
-
-
 The left-hand side of this identity can be rewritten by using the definition of the current \eqref{defcurrent} as
 \begin{align}
     \mathrm{l.h.s.}=\int d^dx \epsilon(x)\expval{\del_{\mu}J^{\mu}(x)\Ocal(x_1)X}.
@@ -126,7 +117,7 @@ On the other hand, the right-hand side is rewritten as
 \begin{align}
     \mathrm{r.h.s.}=\int d^dx \epsilon(x)\delta^d(x-x_1)\expval{\Delta \Ocal(x_1)X}.
 \end{align}
-Thus, we obtain the WT identity:
+Matching both sides for arbitrary $\epsilon(x)$ leads to the identity
 \begin{align}
     \expval{\del_{\mu}J^{\mu}(x) \Ocal(x_1)X}=\delta^d(x-x_1)\expval{\Delta \Ocal(x_1)X}.
     \label{contWTid2}
@@ -147,7 +138,7 @@ Then \eqref{tempWT1} is rewritten as
     \label{tempWT2}
 \end{align}
 
-Finally, we introduce the symmetry defect.  The identity \eqref{tempWT2} reads
+Finally, we introduce so-called ``the symmetry defect.''  The identity \eqref{tempWT2} reads
 \begin{align}
     \expval{(1+i\epsilon Q(\Sigma))\Ocal(x_1)X}=\expval{\Ocal(x_1)X}.
 \end{align}
@@ -178,7 +169,7 @@ The charge \eqref{charge} can be written as
 The orientation of $\Sigma$ is chosen by choosing the volume form $\mathrm{vol}(\Sigma)$ as
 \begin{align}
     &n_{\mu}dx^{\mu}\wedge \mathrm{vol}(\Sigma)=dx^{1}\wedge \dots \wedge dx^{d},\\
-    &n_{\mu}:\text{ the outward-pointing unit normal vecotr of } \Sigma.\nonumber
+    &n_{\mu}:\text{ the outward-pointing unit normal vector of } \Sigma.\nonumber
 \end{align}
 
 
